@@ -44,7 +44,7 @@ export const renderBoard = ({
           image={chosenImages[imageIndex++] || ""}
         />
       );
-      squaresMap[squareId] = { square };
+      squaresMap.set(squareId, { square });
       rowSquares.push(square);
     }
 
