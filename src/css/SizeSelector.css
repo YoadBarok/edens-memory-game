@@ -13,6 +13,7 @@
 }
 
 .size-button {
+  margin: 1vw;
   color: black;
   display: flex;
   justify-content: center;
@@ -22,6 +23,5 @@
   aspect-ratio: 1.5/1;
   border-radius: 10px;
   font-size: 3.5vw;
-  font-weight: bold;
   cursor: pointer;
 }
