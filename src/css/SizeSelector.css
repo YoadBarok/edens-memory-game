@@ -1,3 +1,10 @@
+.size-selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .size-buttons {
   display: flex;
   justify-content: space-evenly;
@@ -6,11 +13,12 @@
 }
 
 .size-button {
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(240, 172, 238);
-  width: 5vw;
+  width: 4vw;
   aspect-ratio: 1.5/1;
   border-radius: 10px;
   font-size: 1.5vw;
