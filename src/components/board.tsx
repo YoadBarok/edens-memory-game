@@ -71,7 +71,8 @@ export const Board = (props: Props) => {
       const squareId = `${row}-${col}`;
       const square = (
         <Square
-          className="hidden"
+          sizeClass={props.size === 4 ? "big" : "small"}
+          displayClass="hidden"
           handleClick={handleClickOnSquare}
           key={squareId}
           id={squareId}

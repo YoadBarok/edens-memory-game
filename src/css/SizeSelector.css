@@ -7,7 +7,7 @@
 
 .size-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 15vw;
 }
@@ -18,10 +18,10 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(240, 172, 238);
-  width: 4vw;
+  width: 10vw;
   aspect-ratio: 1.5/1;
   border-radius: 10px;
-  font-size: 1.5vw;
+  font-size: 3.5vw;
   font-weight: bold;
   cursor: pointer;
 }

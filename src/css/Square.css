@@ -2,16 +2,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 130px; */
-  height: 14vh;
   background-color: green;
-  font-size: 12vh;
   cursor: pointer;
   border: 1px solid black;
   border-radius: 5px;
   aspect-ratio: 1/1;
   margin: 5px;
   transition: background-color 0.5s;
+}
+
+.big-square {
+  height: 9vh;
+  font-size: 8vh;
+}
+
+.small-square {
+  height: 6vh;
+  font-size: 5vh;
 }
 
 .shown {
