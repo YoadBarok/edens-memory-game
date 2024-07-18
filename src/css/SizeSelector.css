@@ -1,0 +1,16 @@
+.size-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 15vw;
+}
+
+.size-button {
+  background-color: rgb(240, 172, 238);
+  width: 5vw;
+  aspect-ratio: 1.5/1;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: bold;
+  cursor: pointer;
+}
