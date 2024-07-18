@@ -9,6 +9,7 @@ type Props = {
   handleClick: (id: string) => void;
   displayClass: SquareClasses;
   sizeClass: SquareSize;
+  clickable: boolean;
 };
 
 export const Square = (props: Props) => {
@@ -21,6 +22,7 @@ export const Square = (props: Props) => {
   squareMap[props.id].setContent = setContent;
 
   const handleClick = () => {
+    if (!props.clickable) return;
     setContent(props.image);
     setClassName("shown");
     props.handleClick(props.id);

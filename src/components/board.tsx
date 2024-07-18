@@ -11,6 +11,7 @@ type Props = {
 
 export const Board = (props: Props) => {
   const squaresMap = useContext(SquareMapContext);
+  const [isClickEnabled, setClickEnabled] = useState(true);
   const [getFirstSelectedSquare, setFirstSelectedSquare] = useState<{
     id: string;
     image: string;
@@ -30,11 +31,13 @@ export const Board = (props: Props) => {
           squaresMap[getFirstSelectedSquare.id].setClass?.("matched");
           squaresMap[getSecondSelectedSquare.id].setClass?.("matched");
         } else {
+          setClickEnabled(false);
           setTimeout(() => {
             squaresMap[getFirstSelectedSquare.id].setClass?.("hidden");
             squaresMap[getSecondSelectedSquare.id].setClass?.("hidden");
             squaresMap[getFirstSelectedSquare.id].setContent?.("");
             squaresMap[getSecondSelectedSquare.id].setContent?.("");
+            setClickEnabled(true);
           }, 700);
         }
         setFirstSelectedSquare(null);
@@ -71,6 +74,7 @@ export const Board = (props: Props) => {
       const squareId = `${row}-${col}`;
       const square = (
         <Square
+          clickable={isClickEnabled}
           sizeClass={props.size === 4 ? "big" : "small"}
           displayClass="hidden"
           handleClick={handleClickOnSquare}
