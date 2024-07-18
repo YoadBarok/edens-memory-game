@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import "../css/Board.css";
-import { SetStateFunction, SquareClasses } from "../types";
+import { SelectedSquare } from "../types";
 import { SquareMapContext } from "../context";
 import { useMatchCheckerEffect } from "../hooks/matchChecker";
 import { renderBoard } from "../utils/renderBoard";
@@ -13,17 +13,11 @@ type Props = {
 export const Board = (props: Props) => {
   const squaresMap = useContext(SquareMapContext);
   const [isClickEnabled, setClickEnabled] = useState(true);
-  const [getFirstSelectedSquare, setFirstSelectedSquare] = useState<{
-    id: string;
-    image: string;
-    setClassName?: SetStateFunction<SquareClasses>;
-  } | null>(null);
+  const [getFirstSelectedSquare, setFirstSelectedSquare] =
+    useState<SelectedSquare | null>(null);
 
-  const [getSecondSelectedSquare, setSecondSelectedSquare] = useState<{
-    id: string;
-    image: string;
-    setClassName?: SetStateFunction<SquareClasses>;
-  } | null>(null);
+  const [getSecondSelectedSquare, setSecondSelectedSquare] =
+    useState<SelectedSquare | null>(null);
 
   useMatchCheckerEffect({
     firstSelectedSquare: getFirstSelectedSquare,
