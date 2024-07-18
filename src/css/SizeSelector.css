@@ -1,3 +1,7 @@
+h3 {
+  color: rgb(240, 172, 238);
+}
+
 .size-selector {
   display: flex;
   flex-direction: column;
@@ -8,7 +12,7 @@
 .size-buttons {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: space-between;
   width: 15vw;
 }
 
@@ -24,4 +28,10 @@
   border-radius: 10px;
   font-size: 3.5vw;
   cursor: pointer;
+  transition: color 0.5s, background-color 0.5s;
+}
+
+.size-button:hover {
+  background-color: rgb(240, 172, 238, 0.7);
+  color: rgb(240, 198, 226);
 }
