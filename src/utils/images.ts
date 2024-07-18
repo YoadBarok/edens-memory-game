@@ -1,27 +1,5 @@
+import { images } from "../constants/images";
 import { shuffle } from "./array";
-
-export const images = [
-  `🧞‍♀️`,
-  `👩‍🎤`,
-  `💄`,
-  `🧜🏻‍♀️`,
-  `🦜`,
-  `🌸`,
-  `🌈`,
-  `💃🏼`,
-  `🧚🏻‍♂️`,
-  `🧞`,
-  `🏃🏼‍♀️`,
-  `👠`,
-  `👙`,
-  `👑`,
-  `👰🏼‍♀️`,
-  `🧑🏻‍🎤`,
-  `👚`,
-  `🐶`,
-  `😸`,
-  `🤡`,
-];
 
 export const chooseImages = (size: number) => {
   const boardImages = [...images];
