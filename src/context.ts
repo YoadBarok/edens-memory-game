@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { SetStateFunction, SquareClasses } from "./types";
+import { GameMode, SetStateFunction, SquareClasses } from "./types";
 
 export const SquareMapContext = createContext<
   Record<
@@ -11,3 +11,7 @@ export const SquareMapContext = createContext<
     }
   >
 >({});
+
+export const GameModeContext = createContext<{ mode: GameMode | null }>({
+  mode: null,
+});

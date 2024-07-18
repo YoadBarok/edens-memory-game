@@ -1,6 +1,6 @@
 import { Square } from "../components/square";
 import { CommonFunctionInput } from "../types";
-import { clickHandler } from "./handleClicks";
+import { boardClickHandler } from "./handleClicks";
 
 export const renderBoard = ({
   size,
@@ -30,7 +30,7 @@ export const renderBoard = ({
           sizeClass={size === 4 ? "big" : "small"}
           displayClass="hidden"
           handleClick={(id: string) =>
-            clickHandler({
+            boardClickHandler({
               id,
               firstSelectedSquare,
               secondSelectedSquare,

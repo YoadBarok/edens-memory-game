@@ -4,11 +4,13 @@ import { chooseImages } from "./utils/images";
 import { SquareMapContext } from "./context";
 import { useEffect, useState } from "react";
 import { SizeSelector } from "./components/sizeSelector";
+import { GameModeSelector } from "./components/gameModeSelector";
 
 function App() {
   const [getSelectedSize, setSelectedSize] = useState<number | null>(null);
   const [shouldShowBoard, setShouldShowBoard] = useState(false);
   const [getImages, setImages] = useState<string[] | null>(null);
+  const [isGameModeSelected, setIsGameModeSelected] = useState(false);
 
   useEffect(() => {
     if (getSelectedSize) {
@@ -19,7 +21,12 @@ function App() {
 
   return (
     <div className="App">
-      {!getSelectedSize && <SizeSelector setSelectedSize={setSelectedSize} />}
+      {!isGameModeSelected && (
+        <GameModeSelector setIsGameModeSelected={setIsGameModeSelected} />
+      )}
+      {!getSelectedSize && isGameModeSelected && (
+        <SizeSelector setSelectedSize={setSelectedSize} />
+      )}
       {shouldShowBoard && getSelectedSize && getImages && (
         <SquareMapContext.Provider value={{}}>
           <button

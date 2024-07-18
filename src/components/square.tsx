@@ -1,7 +1,11 @@
 import { useContext, useState } from "react";
 import "../css/Square.css";
 import { SquareClasses, SquareSize } from "../types";
-import { SquareMapContext } from "../context";
+import { GameModeContext, SquareMapContext } from "../context";
+import {
+  edenModeSquareClickHandler,
+  standardSquareClickHandler,
+} from "../utils/handleClicks";
 
 type Props = {
   id: string;
@@ -13,6 +17,7 @@ type Props = {
 };
 
 export const Square = (props: Props) => {
+  const gameMode = useContext(GameModeContext);
   const squareMap = useContext(SquareMapContext);
   const [getContent, setContent] = useState("");
   const [getClassName, setClassName] = useState<SquareClasses>(
@@ -22,10 +27,25 @@ export const Square = (props: Props) => {
   squareMap[props.id].setContent = setContent;
 
   const onClick = () => {
-    if (!props.clickable) return;
-    setContent(props.image);
-    setClassName("shown");
-    props.handleClick(props.id);
+    if (gameMode.mode === "standard") {
+      standardSquareClickHandler({
+        setContent,
+        setClassName,
+        handleClick: props.handleClick,
+        clickable: props.clickable,
+        image: props.image,
+        id: props.id,
+      });
+    }
+    if (gameMode.mode === "edenMode") {
+      edenModeSquareClickHandler({
+        content: getContent,
+        className: getClassName,
+        setContent,
+        setClassName,
+        image: props.image,
+      });
+    }
   };
 
   return (

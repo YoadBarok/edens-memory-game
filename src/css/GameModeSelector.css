@@ -1,0 +1,39 @@
+h2 {
+  color: rgb(240, 172, 238);
+}
+
+.game-mode-selector {
+  position: absolute;
+  top: 26vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-mode-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+  width: 15vw;
+}
+
+.game-mode-button {
+  margin: 1vw;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(240, 172, 238);
+  width: 17vw;
+  aspect-ratio: 1.5/1;
+  border-radius: 10px;
+  font-size: 3.6vw;
+  cursor: pointer;
+  transition: color 0.5s, background-color 0.5s;
+}
+
+.game-mode-button:hover {
+  background-color: rgb(240, 172, 238, 0.7);
+  color: rgb(240, 198, 226);
+}
