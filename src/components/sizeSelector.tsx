@@ -12,7 +12,7 @@ export const SizeSelector = (props: Props) => {
 
   return (
     <div className="size-selector">
-      <h3>Select size:</h3>
+      <h2>Select size:</h2>
       <div className="size-buttons">
         <button onClick={() => selectSize(6)} className="size-button">
           6x6
