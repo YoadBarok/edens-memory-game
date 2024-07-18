@@ -21,7 +21,7 @@ export const Square = (props: Props) => {
   squareMap[props.id].setClass = setClassName;
   squareMap[props.id].setContent = setContent;
 
-  const handleClick = () => {
+  const onClick = () => {
     if (!props.clickable) return;
     setContent(props.image);
     setClassName("shown");
@@ -31,7 +31,7 @@ export const Square = (props: Props) => {
   return (
     <div
       className={`square ${props.sizeClass}-square ${getClassName}`}
-      onClick={handleClick}
+      onClick={onClick}
     >
       <p>{getContent}</p>
     </div>
