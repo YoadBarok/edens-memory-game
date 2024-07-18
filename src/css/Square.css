@@ -37,8 +37,3 @@
   background-color: rgb(123, 232, 179);
   pointer-events: none;
 }
-
-.not-matched {
-  background-color: rgb(255, 0, 0);
-  pointer-events: none;
-}
