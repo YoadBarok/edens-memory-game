@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export type SetStateFunction<T> = Dispatch<SetStateAction<T>>;
-export type SquareClasses = "shown" | "shown-eden-mode" | "hidden" | "matched";
+export type SquareClasses = "shown" | "shownEdenMode" | "hidden" | "matched";
 export type SquareSize = "small" | "big";
 
 export type SelectedSquare = {
@@ -28,3 +28,5 @@ export type CommonFunctionInput = {
 };
 
 export type GameMode = "standard" | "edenMode";
+
+export type BoardSize = "small" | "big";

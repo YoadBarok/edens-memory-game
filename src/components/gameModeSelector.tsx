@@ -2,6 +2,7 @@ import { GameMode, SetStateFunction } from "../types";
 import "../css/GameModeSelector.css";
 import { useContext } from "react";
 import { GameModeContext } from "../context";
+import { GAME_MODES } from "../constants/gameModes";
 
 type Props = {
   setIsGameModeSelected: SetStateFunction<boolean>;
@@ -21,13 +22,13 @@ export const GameModeSelector = (props: Props) => {
       <div className="game-mode-buttons">
         <button
           className="game-mode-button"
-          onClick={() => setGameMode("standard")}
+          onClick={() => setGameMode(GAME_MODES.standard)}
         >
           Standard
         </button>
         <button
           className="game-mode-button"
-          onClick={() => setGameMode("edenMode")}
+          onClick={() => setGameMode(GAME_MODES.edenMode)}
         >
           Eden's mode
         </button>

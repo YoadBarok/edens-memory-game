@@ -1,3 +1,4 @@
+import { SQUARE_CLASSES } from "../constants/squareClasses";
 import { CommonFunctionInput, SetStateFunction, SquareClasses } from "../types";
 
 export const boardClickHandler = ({
@@ -40,7 +41,7 @@ export const standardSquareClickHandler = ({
 }) => {
   if (!clickable) return;
   setContent(image);
-  setClassName("shown");
+  setClassName(SQUARE_CLASSES.shown);
   handleClick(id);
 };
 
@@ -58,5 +59,9 @@ export const edenModeSquareClickHandler = ({
   image: string;
 }) => {
   setContent(content === "" ? image : "");
-  setClassName(className === "hidden" ? "shown-eden-mode" : "hidden");
+  setClassName(
+    className === SQUARE_CLASSES.hidden
+      ? SQUARE_CLASSES.shownEdenMode
+      : SQUARE_CLASSES.hidden
+  );
 };

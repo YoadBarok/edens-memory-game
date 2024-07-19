@@ -6,6 +6,7 @@ import {
   edenModeSquareClickHandler,
   standardSquareClickHandler,
 } from "../utils/handleClicks";
+import { GAME_MODES } from "../constants/gameModes";
 
 type Props = {
   id: string;
@@ -27,7 +28,7 @@ export const Square = (props: Props) => {
   squareMap[props.id].setContent = setContent;
 
   const onClick = () => {
-    if (gameMode.mode === "standard") {
+    if (gameMode.mode === GAME_MODES.standard) {
       standardSquareClickHandler({
         setContent,
         setClassName,
@@ -37,7 +38,7 @@ export const Square = (props: Props) => {
         id: props.id,
       });
     }
-    if (gameMode.mode === "edenMode") {
+    if (gameMode.mode === GAME_MODES.edenMode) {
       edenModeSquareClickHandler({
         content: getContent,
         className: getClassName,
