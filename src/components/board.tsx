@@ -1,9 +1,10 @@
-import { useState, useContext, useEffect, useCallback } from "react";
+import { useState, useContext, useCallback } from "react";
 import "../css/Board.css";
-import { NullableSelectedSquare } from "../types";
 import { SquareMapContext } from "../context";
 import { useMatchCheckerEffect } from "../hooks/matchChecker";
 import { renderBoard } from "../utils/renderBoard";
+import { Nullable, SelectedSquare } from "../types";
+import { useCompletedCheckerEffect } from "../hooks/completedChecker";
 
 type Props = {
   size: number;
@@ -15,31 +16,18 @@ export const Board = (props: Props) => {
   const [isClickEnabled, setClickEnabled] = useState(true);
   const [change, setChange] = useState(0);
   const [getFirstSelectedSquare, setFirstSelectedSquare] =
-    useState<NullableSelectedSquare>(null);
+      useState<Nullable<SelectedSquare>>(null);
 
   const [getSecondSelectedSquare, setSecondSelectedSquare] =
-      useState<NullableSelectedSquare>(null);
-
-  useEffect(() => {
-      const values = Array.from(squaresMap.values());
-      const isCompleted = values
-          .map((k) => k.getClassName === "matched")
-          .every((k) => k);
-      if (isCompleted) {
-        // TODO: do something when completed :)
-        let counter = 0;
-        squaresMap.forEach((square) => {
-            counter++;
-            setTimeout(() => {
-                square.setContent?.(`👍`);
-            }, counter * 100);
-        });
-      }
-  }, [change, squaresMap]);
+      useState<Nullable<SelectedSquare>>(null);
 
   const handleChange = useCallback(() => {
     setChange(change+1)
   }, [change])
+
+  useCompletedCheckerEffect({
+     change, squaresMap,
+  });
   
   useMatchCheckerEffect({
       firstSelectedSquare: getFirstSelectedSquare,

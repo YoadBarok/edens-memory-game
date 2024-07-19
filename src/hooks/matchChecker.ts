@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { NullableSelectedSquare, SelectedSquare, SetStateFunction, SquareMap } from "../types";
+import { Nullable, SelectedSquare, SetStateFunction, SquareMap } from "../types";
 
 export const useMatchCheckerEffect = ({
     firstSelectedSquare,
@@ -10,12 +10,12 @@ export const useMatchCheckerEffect = ({
     setSecondSelectedSquare,
     handleChange,
 }: {
-    firstSelectedSquare: NullableSelectedSquare;
-    secondSelectedSquare: NullableSelectedSquare;
+    firstSelectedSquare: Nullable<SelectedSquare>;
+    secondSelectedSquare: Nullable<SelectedSquare>;
     squaresMap: SquareMap;
     setClickEnabled: SetStateFunction<boolean>;
-    setFirstSelectedSquare: SetStateFunction<NullableSelectedSquare>;
-    setSecondSelectedSquare: SetStateFunction<NullableSelectedSquare>;
+    setFirstSelectedSquare: SetStateFunction<Nullable<SelectedSquare>>;
+    setSecondSelectedSquare: SetStateFunction<Nullable<SelectedSquare>>;
     handleChange: CallableFunction;
 }) => {
     useEffect(() => {

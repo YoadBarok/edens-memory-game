@@ -15,11 +15,7 @@ export type SelectedSquare = {
     setClassName?: SetStateFunction<SquareClasses>;
 };
 
-export type NullableSelectedSquare = {
-  id: string;
-  image: string;
-  setClassName?: SetStateFunction<SquareClasses>;
-} | null;
+export type Nullable<T> = T | null;
 
 export type Square = {
     square: JSX.Element;
@@ -31,11 +27,11 @@ export type Square = {
 export type SquareMap = Map<string, Square>;
 
 export type CommonFunctionInput = {
-    firstSelectedSquare: NullableSelectedSquare;
-    secondSelectedSquare: NullableSelectedSquare;
+    firstSelectedSquare: Nullable<SelectedSquare>;
+    secondSelectedSquare: Nullable<SelectedSquare>;
     squaresMap: SquareMap;
-    setFirstSelectedSquare: SetStateFunction<NullableSelectedSquare>;
-    setSecondSelectedSquare: SetStateFunction<NullableSelectedSquare>;
+    setFirstSelectedSquare: SetStateFunction<Nullable<SelectedSquare>>;
+    setSecondSelectedSquare: SetStateFunction<Nullable<SelectedSquare>>;
 };
 
 export type GameMode = "standard" | "edenMode";
