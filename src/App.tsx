@@ -5,6 +5,7 @@ import { SquareMapContext } from "./context";
 import { useCallback, useEffect, useState } from "react";
 import { SizeSelector } from "./components/sizeSelector";
 import { GameModeSelector } from "./components/gameModeSelector";
+import { Counter } from "./components/counter";
 
 function App() {
     const [getSelectedSize, setSelectedSize] = useState<number | null>(null);
@@ -48,14 +49,7 @@ function App() {
                         chosenImages={getImages}
                         handleUpdate={handleUpdate}
                     />
-                    {counter > 0 && (
-                        <div className="eden-text">
-                            <h4>
-                                {counter} &nbsp;
-                                {counter === 1 ? "Attempt" : "Attempts"}
-                            </h4>
-                        </div>
-                    )}
+                    <Counter counter={counter} />
                 </SquareMapContext.Provider>
             )}
         </div>
