@@ -14,12 +14,12 @@ export const boardClickHandler = ({
   if (!firstSelectedSquare) {
     setFirstSelectedSquare({
       id,
-      image: squaresMap[id].square.props.image,
+      image: squaresMap.get(id)?.square.props.image,
     });
   } else if (!secondSelectedSquare) {
     setSecondSelectedSquare({
       id,
-      image: squaresMap[id].square.props.image,
+      image: squaresMap.get(id)?.square.props.image,
     });
   }
 };

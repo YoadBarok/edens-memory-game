@@ -11,6 +11,7 @@ function App() {
   const [shouldShowBoard, setShouldShowBoard] = useState(false);
   const [getImages, setImages] = useState<string[] | null>(null);
   const [isGameModeSelected, setIsGameModeSelected] = useState(false);
+  const [squaresMap] = useState(new Map());
 
   useEffect(() => {
     if (getSelectedSize) {
@@ -20,25 +21,25 @@ function App() {
   }, [getSelectedSize]);
 
   return (
-    <div className="App">
-      {!isGameModeSelected && (
-        <GameModeSelector setIsGameModeSelected={setIsGameModeSelected} />
-      )}
-      {!getSelectedSize && isGameModeSelected && (
-        <SizeSelector setSelectedSize={setSelectedSize} />
-      )}
-      {shouldShowBoard && getSelectedSize && getImages && (
-        <SquareMapContext.Provider value={{}}>
-          <button
-            className="big-button"
-            onClick={() => window.location.reload()}
-          >
-            🔄
-          </button>
-          <Board size={getSelectedSize} chosenImages={getImages} />
-        </SquareMapContext.Provider>
-      )}
-    </div>
+      <div className="App">
+          {!isGameModeSelected && (
+              <GameModeSelector setIsGameModeSelected={setIsGameModeSelected} />
+          )}
+          {!getSelectedSize && isGameModeSelected && (
+              <SizeSelector setSelectedSize={setSelectedSize} />
+          )}
+          {shouldShowBoard && getSelectedSize && getImages && (
+              <SquareMapContext.Provider value={squaresMap}>
+                  <button
+                      className="big-button"
+                      onClick={() => window.location.reload()}
+                  >
+                      🔄
+                  </button>
+                  <Board size={getSelectedSize} chosenImages={getImages} />
+              </SquareMapContext.Provider>
+          )}
+      </div>
   );
 }
 

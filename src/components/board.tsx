@@ -1,9 +1,10 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useCallback } from "react";
 import "../css/Board.css";
-import { SelectedSquare } from "../types";
 import { SquareMapContext } from "../context";
 import { useMatchCheckerEffect } from "../hooks/matchChecker";
 import { renderBoard } from "../utils/renderBoard";
+import { Nullable, SelectedSquare } from "../types";
+import { useCompletedCheckerEffect } from "../hooks/completedChecker";
 
 type Props = {
   size: number;
@@ -13,19 +14,29 @@ type Props = {
 export const Board = (props: Props) => {
   const squaresMap = useContext(SquareMapContext);
   const [isClickEnabled, setClickEnabled] = useState(true);
+  const [change, setChange] = useState(0);
   const [getFirstSelectedSquare, setFirstSelectedSquare] =
-    useState<SelectedSquare | null>(null);
+      useState<Nullable<SelectedSquare>>(null);
 
   const [getSecondSelectedSquare, setSecondSelectedSquare] =
-    useState<SelectedSquare | null>(null);
+      useState<Nullable<SelectedSquare>>(null);
 
+  const handleChange = useCallback(() => {
+    setChange(change+1)
+  }, [change])
+
+  useCompletedCheckerEffect({
+     change, squaresMap,
+  });
+  
   useMatchCheckerEffect({
-    firstSelectedSquare: getFirstSelectedSquare,
-    secondSelectedSquare: getSecondSelectedSquare,
-    squaresMap,
-    setClickEnabled,
-    setFirstSelectedSquare,
-    setSecondSelectedSquare,
+      firstSelectedSquare: getFirstSelectedSquare,
+      secondSelectedSquare: getSecondSelectedSquare,
+      squaresMap,
+      setClickEnabled,
+      setFirstSelectedSquare,
+      setSecondSelectedSquare,
+      handleChange,
   });
 
   const board = renderBoard({

@@ -24,8 +24,14 @@ export const Square = (props: Props) => {
   const [getClassName, setClassName] = useState<SquareClasses>(
     props.displayClass
   );
-  squareMap[props.id].setClass = setClassName;
-  squareMap[props.id].setContent = setContent;
+  const { id: squareId } = props;
+  const square = squareMap.get(squareId);
+  if (square) {
+    square.setClass = setClassName;
+    square.getClassName = getClassName;
+    square.setContent = setContent;
+    squareMap.set(squareId, square);
+  } 
 
   const onClick = () => {
     if (gameMode.mode === GAME_MODES.standard) {
