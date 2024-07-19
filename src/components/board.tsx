@@ -9,6 +9,7 @@ import { useCompletedCheckerEffect } from "../hooks/completedChecker";
 type Props = {
   size: number;
   chosenImages: string[];
+  handleUpdate: CallableFunction;
 };
 
 export const Board = (props: Props) => {
@@ -23,7 +24,8 @@ export const Board = (props: Props) => {
 
   const handleChange = useCallback(() => {
     setChange(change+1)
-  }, [change])
+    props.handleUpdate();
+  }, [change, props])
 
   useCompletedCheckerEffect({
      change, squaresMap,

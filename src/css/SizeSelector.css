@@ -26,6 +26,7 @@ h2 {
   align-items: center;
   background-color: rgb(240, 172, 238);
   width: 17vw;
+  padding: 18px;
   aspect-ratio: 1.5/1;
   border-radius: 10px;
   font-size: 5.5vw;
