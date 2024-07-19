@@ -1,8 +1,8 @@
-import { GameMode, SetStateFunction } from "../types";
-import "../css/GameModeSelector.css";
+import { GameMode, SetStateFunction } from "../../types";
+import "../../css/GameModeSelector.css";
 import { useContext } from "react";
-import { GameModeContext } from "../context";
-import { GAME_MODES } from "../constants/gameModes";
+import { GameModeContext } from "../../context";
+import { GAME_MODES } from "../../constants/gameModes";
 
 type Props = {
   setIsGameModeSelected: SetStateFunction<boolean>;

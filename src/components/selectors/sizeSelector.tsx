@@ -1,6 +1,6 @@
-import { SetStateFunction } from "../types";
-import "../css/SizeSelector.css";
-import { BOARD_SIZES } from "../constants/boardSizes";
+import { SetStateFunction } from "../../types";
+import "../../css/SizeSelector.css";
+import { BOARD_SIZES } from "../../constants/boardSizes";
 
 type Props = {
   setSelectedSize: SetStateFunction<number | null>;
