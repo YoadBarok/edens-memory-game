@@ -44,7 +44,7 @@ function App() {
       {!getSelectedSize && isGameModeSelected && (
         <SizeSelector setSelectedSize={setSelectedSize} />
       )}
-      {shouldShowBoard && getSelectedSize && getImages && (
+      {shouldShowBoard && getSelectedSize && getImages?.length && (
         <SquareMapContext.Provider value={squaresMap}>
           <ResetButton />
           <Board

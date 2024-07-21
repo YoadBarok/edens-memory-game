@@ -1,4 +1,4 @@
-import { useState, useContext, useCallback } from "react";
+import { useState, useContext, useCallback, useEffect } from "react";
 import "../css/Board.css";
 import { GameModeContext, SquareMapContext } from "../context";
 import { useMatchCheckerEffect } from "../hooks/matchChecker";
@@ -27,7 +27,7 @@ export const Board = (props: Props) => {
   const { getAttemptCount, setAttemptCount } = props.attempts;
   const { getTime, setTime } = props.time;
   const { setGameCompleted: setShouldShowResult } = props;
-  const [shouldCount, setShouldCount] = useState(true);
+  const [shouldCount, setShouldCount] = useState(false);
 
   const gameMode = useContext(GameModeContext);
   const squaresMap = useContext(SquareMapContext);
@@ -38,6 +38,12 @@ export const Board = (props: Props) => {
 
   const [getSecondSelectedSquare, setSecondSelectedSquare] =
     useState<Nullable<SelectedSquare>>(null);
+
+  useEffect(() => {
+    if (getFirstSelectedSquare && !shouldCount) {
+      setShouldCount(true);
+    }
+  }, [getFirstSelectedSquare, shouldCount]);
 
   const handleUpdate = useCallback(() => {
     setAttemptCount(getAttemptCount + 1);
@@ -81,12 +87,16 @@ export const Board = (props: Props) => {
       <div className="board">{board}</div>
       {gameMode.mode === GAME_MODES.standard && (
         <div>
+          {shouldCount ? (
+            <Timer
+              getTime={getTime}
+              setTime={setTime}
+              shouldCount={shouldCount}
+            />
+          ) : (
+            <h4 className="eden-text">Click any square to start the game</h4>
+          )}
           <Counter counter={getAttemptCount} />
-          <Timer
-            getTime={getTime}
-            setTime={setTime}
-            shouldCount={shouldCount}
-          />
         </div>
       )}
     </div>

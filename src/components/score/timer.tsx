@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { MAX_SECONDS } from "../../constants/time";
 import { SetStateFunction } from "../../types";
 
 type Props = {
@@ -11,9 +10,7 @@ type Props = {
 export const Timer = (props: Props) => {
   const { getTime, setTime } = props;
   useEffect(() => {
-    getTime < MAX_SECONDS &&
-      props.shouldCount &&
-      setTimeout(() => setTime(getTime + 1), 1000);
+    props.shouldCount && setTimeout(() => setTime(getTime + 1), 1000);
   }, [props.shouldCount, getTime, setTime]);
 
   return (
