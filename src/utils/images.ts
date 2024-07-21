@@ -1,13 +1,13 @@
-import { images } from "../constants/images";
 import { shuffle } from "./array";
 
-export const chooseImages = (size: number) => {
-  const boardImages = [...images];
-  shuffle(boardImages);
+type Image = string;
+
+export const chooseImages = (size: number, images: Image[]) => {
+  shuffle(images);
 
   const chosenImages = [
-    ...boardImages.slice(0, (size * size) / 2),
-    ...boardImages.slice(0, (size * size) / 2),
+    ...images.slice(0, (size * size) / 2),
+    ...images.slice(0, (size * size) / 2),
   ];
   shuffle(chosenImages);
 

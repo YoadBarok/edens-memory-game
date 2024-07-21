@@ -8,6 +8,7 @@ import { GameModeSelector } from "./components/selectors/gameModeSelector";
 import { Result } from "./components/score/result";
 import { calculateScore } from "./utils/calculateScore";
 import { ResetButton } from "./components/resetButton";
+import { images } from "./constants/images";
 
 function App() {
   const [getAttemptCount, setAttemptCount] = useState(0);
@@ -24,7 +25,7 @@ function App() {
   useEffect(() => {
     if (getSelectedSize) {
       setShouldShowBoard(true);
-      setImages(chooseImages(getSelectedSize));
+      setImages(chooseImages(getSelectedSize, images));
     }
   }, [getSelectedSize]);
 
@@ -49,6 +50,7 @@ function App() {
           <ResetButton />
           <Board
             setGameCompleted={setGameCompleted}
+            isGameCompleted={isGameCompleted}
             size={getSelectedSize}
             chosenImages={getImages}
             attempts={{ getAttemptCount, setAttemptCount }}

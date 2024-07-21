@@ -14,17 +14,12 @@ export const useCompletedCheckerEffect = ({
 }) => {
   useEffect(() => {
     const values = Array.from(squaresMap.values());
-    const isCompleted = values.every((k) => k.getClassName === "matched");
+    const isCompleted = values.every(
+      (square) => square.getClassName === "matched"
+    );
     if (isCompleted) {
       setShouldCount(false);
       setShouldShowResult(true);
-      let counter = 0;
-      squaresMap.forEach((square) => {
-        counter++;
-        setTimeout(() => {
-          square.setContent?.(`👍`);
-        }, counter * 100);
-      });
     }
   }, [change, setShouldCount, setShouldShowResult, squaresMap]);
 };

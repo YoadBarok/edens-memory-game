@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { SetStateFunction } from "../../types";
+import "../../css/Timer.css";
 
 type Props = {
   shouldCount: boolean;
@@ -14,9 +15,15 @@ export const Timer = (props: Props) => {
   }, [props.shouldCount, getTime, setTime]);
 
   return (
-    <div>
-      <h4 className="eden-text">Time:</h4>
-      <p className="eden-text">{getTime}</p>
+    <div className="timer">
+      {props.shouldCount ? (
+        <div>
+          <h4 className="eden-text">Time:</h4>
+          <p className="eden-text">{getTime}</p>
+        </div>
+      ) : (
+        <h4 className="eden-text">Click any square to start the game.</h4>
+      )}
     </div>
   );
 };

@@ -21,6 +21,7 @@ type Props = {
     setTime: SetStateFunction<number>;
   };
   setGameCompleted: SetStateFunction<boolean>;
+  isGameCompleted: boolean;
 };
 
 export const Board = (props: Props) => {
@@ -87,16 +88,12 @@ export const Board = (props: Props) => {
       <div className="board">{board}</div>
       {gameMode.mode === GAME_MODES.standard && (
         <div>
-          {shouldCount ? (
-            <Timer
-              getTime={getTime}
-              setTime={setTime}
-              shouldCount={shouldCount}
-            />
-          ) : (
-            <h4 className="eden-text">Click any square to start the game</h4>
-          )}
           <Counter counter={getAttemptCount} />
+          <Timer
+            getTime={getTime}
+            setTime={setTime}
+            shouldCount={shouldCount}
+          />
         </div>
       )}
     </div>
