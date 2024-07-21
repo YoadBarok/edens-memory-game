@@ -8,6 +8,8 @@ import { useCompletedCheckerEffect } from "../hooks/completedChecker";
 import { GAME_MODES } from "../constants/gameModes";
 import { Counter } from "./score/counter";
 import { Timer } from "./score/timer";
+import { Result } from "./score/result";
+import { calculateScore } from "../utils/calculateScore";
 
 type Props = {
   size: number;
@@ -85,17 +87,32 @@ export const Board = (props: Props) => {
 
   return (
     <div>
-      <div className="board">{board}</div>
-      {gameMode.mode === GAME_MODES.standard && (
-        <div>
-          <Counter counter={getAttemptCount} />
-          <Timer
-            getTime={getTime}
-            setTime={setTime}
-            shouldCount={shouldCount}
-          />
-        </div>
-      )}
+      <div>
+        <div className="board">{board}</div>
+      </div>
+      <div>
+        {gameMode.mode === GAME_MODES.standard && (
+          <div>
+            {!props.isGameCompleted ? (
+              <div>
+                <Counter counter={getAttemptCount} />
+                <Timer
+                  getTime={getTime}
+                  setTime={setTime}
+                  shouldCount={shouldCount}
+                />
+              </div>
+            ) : (
+              <Result
+                time={getTime}
+                attempts={getAttemptCount}
+                score={calculateScore(getTime, getAttemptCount)}
+                boardSize={props.size}
+              />
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

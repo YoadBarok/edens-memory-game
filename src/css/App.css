@@ -37,3 +37,9 @@
   background-color: #282c34;
   color: white;
 }
+
+.main-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
