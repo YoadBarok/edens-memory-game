@@ -20,6 +20,11 @@ export const useCompletedCheckerEffect = ({
     if (isCompleted) {
       setShouldCount(false);
       setShouldShowResult(true);
+      for (let i = 0; i < values.length; i++) {
+        setTimeout(() => {
+          values[i].setContent?.(`👍`);
+        }, i * 100);
+      }
     }
   }, [change, setShouldCount, setShouldShowResult, squaresMap]);
 };
