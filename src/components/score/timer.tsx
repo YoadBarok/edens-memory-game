@@ -9,14 +9,27 @@ type Props = {
 };
 
 export const Timer = (props: Props) => {
-  const { getTime, setTime } = props;
+  const { getTime, setTime, shouldCount } = props;
+
   useEffect(() => {
-    props.shouldCount && setTimeout(() => setTime(getTime + 1), 1000);
-  }, [props.shouldCount, getTime, setTime]);
+    let counterTimeout: NodeJS.Timeout;
+
+    if (shouldCount) {
+      counterTimeout = setTimeout(() => {
+        setTime((prevTime) => prevTime + 1);
+      }, 1000);
+    }
+
+    return () => {
+      if (counterTimeout) {
+        clearTimeout(counterTimeout);
+      }
+    };
+  }, [getTime, setTime, shouldCount]);
 
   return (
     <div className="timer">
-      {props.shouldCount ? (
+      {shouldCount ? (
         <div>
           <h4 className="eden-text">Time:</h4>
           <p className="eden-text">{getTime}</p>
