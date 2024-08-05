@@ -22,7 +22,7 @@ export const useCompletedCheckerEffect = ({
       setShouldShowResult(true);
       for (let i = 0; i < values.length; i++) {
         setTimeout(() => {
-          values[i].setContent?.(`👍`);
+          values[i].setContent?.(`🐇`);
         }, i * 100);
       }
     }
