@@ -10,6 +10,7 @@ import { Counter } from "./score/counter";
 import { Timer } from "./score/timer";
 import { Result } from "./score/result";
 import { calculateScore } from "../utils/calculateScore";
+import { getTopTenScores } from "../services/scoreService";
 
 type Props = {
   size: number;
@@ -32,6 +33,10 @@ export const Board = (props: Props) => {
   const { setGameCompleted: setShouldShowResult } = props;
   const [shouldCount, setShouldCount] = useState(false);
 
+  useEffect(() => {
+    const getScores = async () => await getTopTenScores();
+    getScores();
+  });
   const gameMode = useContext(GameModeContext);
   const squaresMap = useContext(SquareMapContext);
   const [isClickEnabled, setClickEnabled] = useState(true);
