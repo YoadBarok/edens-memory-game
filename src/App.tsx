@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { SizeSelector } from "./components/selectors/sizeSelector";
 import { GameModeSelector } from "./components/selectors/gameModeSelector";
 import { ResetButton } from "./components/resetButton";
-import { images } from "./constants/images";
+import { fetchImages as fetchImagesFromBackend } from "./services/imagesService";
 
 function App() {
   const [getAttemptCount, setAttemptCount] = useState(0);
@@ -19,10 +19,17 @@ function App() {
   const [isGameCompleted, setGameCompleted] = useState(false);
 
   useEffect(() => {
-    if (getSelectedSize) {
-      setShouldShowBoard(true);
-      setImages(chooseImages(getSelectedSize, images));
-    }
+    const fetchAndSetImages = async () => {
+      if (getSelectedSize) {
+        const images = await fetchImagesFromBackend();
+        const chosenImages = chooseImages(getSelectedSize, images);
+
+        setImages(chosenImages);
+        setShouldShowBoard(true);
+      }
+    };
+
+    fetchAndSetImages();
   }, [getSelectedSize]);
 
   return (
