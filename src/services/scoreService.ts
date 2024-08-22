@@ -1,10 +1,9 @@
 import axios from "axios";
 import { Score, HighScores } from "../types";
-
-const backeendUrl = process.env.REACT_APP_BACKEND_URL;
+import { BACKEND_URL } from "../constants/backendUrl";
 
 export const getTopTenScores = async (): Promise<HighScores> => {
-  const response = await axios.get(`${backeendUrl}/score/top-ten`);
+  const response = await axios.get(`${BACKEND_URL}/score/top-ten`);
 
   return response.data;
 };
@@ -12,13 +11,13 @@ export const getTopTenScores = async (): Promise<HighScores> => {
 export const createScore = async (
   scoreData: Partial<Score>
 ): Promise<Score> => {
-  const response = await axios.post(`${backeendUrl}/score`, scoreData);
+  const response = await axios.post(`${BACKEND_URL}/score`, scoreData);
   console.log(response.data);
 
   return response.data;
 };
 
 export const getRank = async (id: number): Promise<{ rank: number }> => {
-  const response = await axios.get(`${backeendUrl}/score/${id}`);
+  const response = await axios.get(`${BACKEND_URL}/score/${id}`);
   return response.data;
 };
