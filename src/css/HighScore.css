@@ -4,6 +4,10 @@
   justify-content: space-evenly;
 }
 
+.list {
+  display: flex;
+}
+
 .four-on-four {
   margin: 0 2vw;
   min-width: 10vw;
