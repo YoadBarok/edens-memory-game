@@ -20,12 +20,9 @@ export const HighScore = (props: Props) => {
 
   const renderList = (array: Score[]) => {
     return array.map((score: Score, index: number) => (
-      <div className="list">
-        <p key={index}>{score.rank}.&nbsp; </p>
-        <p key={index}>
-          {score.name} - {score.value}
-        </p>
-      </div>
+      <p className="row" key={index}>
+        {score.rank}.&nbsp;{score.name} - {score.value}
+      </p>
     ));
   };
 
