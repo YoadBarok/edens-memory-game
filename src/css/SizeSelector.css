@@ -3,11 +3,10 @@ h2 {
 }
 
 .size-selector {
-  position: absolute;
-  top: 26vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 

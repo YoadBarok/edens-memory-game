@@ -1,0 +1,15 @@
+.lists {
+  display: flex;
+  align-items: start;
+  justify-content: space-evenly;
+}
+
+.four-on-four {
+  margin: 0 2vw;
+  min-width: 10vw;
+}
+
+.six-on-six {
+  margin: 0 2vw;
+  min-width: 10vw;
+}

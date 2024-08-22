@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { SetStateFunction, SquareMap } from "../types";
 
+const FINISHED_EMOJI = "🐇";
+
 export const useCompletedCheckerEffect = ({
   change,
   squaresMap,
@@ -17,14 +19,26 @@ export const useCompletedCheckerEffect = ({
     const isCompleted = values.every(
       (square) => square.getClassName === "matched"
     );
+
     if (isCompleted) {
       setShouldCount(false);
-      setShouldShowResult(true);
-      for (let i = 0; i < values.length; i++) {
+
+      const timeoutPromises = Array.from(squaresMap.values()).map(
+        (square, index) => {
+          return new Promise<void>((resolve) => {
+            setTimeout(() => {
+              square.setContent?.(FINISHED_EMOJI);
+              resolve();
+            }, index * 100);
+          });
+        }
+      );
+
+      Promise.all(timeoutPromises).then(() => {
         setTimeout(() => {
-          values[i].setContent?.(`🐇`);
-        }, i * 100);
-      }
+          setShouldShowResult(true);
+        }, 100);
+      });
     }
   }, [change, setShouldCount, setShouldShowResult, squaresMap]);
 };

@@ -32,3 +32,16 @@ export type CommonFunctionInput = {
 export type GameMode = "standard" | "edenMode";
 
 export type BoardSize = "small" | "big";
+
+export type Score = {
+  id: number;
+  name: string;
+  value: number;
+  boardSize: number;
+  rank?: number;
+};
+
+export type HighScores = {
+  four: Score[];
+  six: Score[];
+};

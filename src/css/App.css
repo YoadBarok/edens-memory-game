@@ -1,4 +1,5 @@
 .App {
+  padding: 2vh 0;
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
@@ -6,8 +7,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: start;
+  font-size: 2.5vh;
+}
+
+@media (min-width: 768px) {
+  .App {
+    font-size: 1.9vh;
+  }
 }
 
 .big-button {
@@ -17,7 +24,7 @@
   align-items: center;
   cursor: pointer;
   height: 7vh;
-  aspect-ratio: 0/1;
+  width: 15vw;
   font-size: 7vh;
   background-color: inherit;
   border: none;
@@ -27,19 +34,19 @@
   color: rgb(240, 172, 238);
 }
 
-.result {
+.board-frame {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: #282c34;
-  color: white;
 }
 
-.main-frame {
+.post-game {
+  padding: 5vh;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  align-items: center;
+}
+
+.result {
+  font-size: 1.7em;
 }

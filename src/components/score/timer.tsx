@@ -29,14 +29,10 @@ export const Timer = (props: Props) => {
 
   return (
     <div className="timer">
-      {shouldCount ? (
-        <div>
-          <h4 className="eden-text">Time:</h4>
-          <p className="eden-text">{getTime}</p>
-        </div>
-      ) : (
-        <h4 className="eden-text">Click any square to start the game.</h4>
-      )}
+      <div>
+        <h4 className="eden-text">Time:</h4>
+        <p className="eden-text">{getTime}</p>
+      </div>
     </div>
   );
 };

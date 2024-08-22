@@ -31,7 +31,7 @@ export const Square = (props: Props) => {
     square.getClassName = getClassName;
     square.setContent = setContent;
     squareMap.set(squareId, square);
-  } 
+  }
 
   const onClick = () => {
     if (gameMode.mode === GAME_MODES.standard) {

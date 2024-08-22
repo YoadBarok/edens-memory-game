@@ -7,6 +7,9 @@ import { SizeSelector } from "./components/selectors/sizeSelector";
 import { GameModeSelector } from "./components/selectors/gameModeSelector";
 import { ResetButton } from "./components/resetButton";
 import { fetchImages as fetchImagesFromBackend } from "./services/imagesService";
+import { Result } from "./components/score/result";
+import { calculateScore } from "./utils/calculateScore";
+import { HighScore } from "./components/score/highScore";
 
 function App() {
   const [getAttemptCount, setAttemptCount] = useState(0);
@@ -35,25 +38,46 @@ function App() {
   return (
     <div className="App">
       {!isGameModeSelected && (
-        <GameModeSelector setIsGameModeSelected={setIsGameModeSelected} />
+        <div>
+          <div className="mode-selector">
+            <GameModeSelector setIsGameModeSelected={setIsGameModeSelected} />
+          </div>
+          <div className="score-board">
+            <HighScore />
+          </div>
+        </div>
       )}
       {!getSelectedSize && isGameModeSelected && (
         <SizeSelector setSelectedSize={setSelectedSize} />
       )}
-      {shouldShowBoard && getSelectedSize && getImages?.length && (
-        <SquareMapContext.Provider value={squaresMap}>
-          <div className="main-frame">
-            <ResetButton />
-            <Board
-              setGameCompleted={setGameCompleted}
-              isGameCompleted={isGameCompleted}
-              size={getSelectedSize}
-              chosenImages={getImages}
-              attempts={{ getAttemptCount, setAttemptCount }}
-              time={{ getTime, setTime }}
-            />
-          </div>
-        </SquareMapContext.Provider>
+      {shouldShowBoard &&
+        getSelectedSize &&
+        getImages?.length &&
+        !isGameCompleted && (
+          <SquareMapContext.Provider value={squaresMap}>
+            <div className="board-frame">
+              <ResetButton />
+              <Board
+                setGameCompleted={setGameCompleted}
+                isGameCompleted={isGameCompleted}
+                size={getSelectedSize}
+                chosenImages={getImages}
+                attempts={{ getAttemptCount, setAttemptCount }}
+                time={{ getTime, setTime }}
+              />
+            </div>
+          </SquareMapContext.Provider>
+        )}
+      {isGameCompleted && (
+        <div className="post-game">
+          <ResetButton />
+          <Result
+            time={getTime}
+            attempts={getAttemptCount}
+            score={calculateScore(getTime, getAttemptCount)}
+            boardSize={getSelectedSize || 0}
+          />
+        </div>
       )}
     </div>
   );
