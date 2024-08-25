@@ -4,9 +4,9 @@ import { BACKEND_URL } from "../constants/backendUrl";
 import { REQUEST_HEADERS } from "../constants/requestHeaders";
 
 export const getTopTenScores = async (): Promise<HighScores> => {
-  console.log(REQUEST_HEADERS);
-
-  const response = await axios.get(`${BACKEND_URL}/score/top-ten`);
+  const response = await axios.get(`${BACKEND_URL}/score/top-ten`, {
+    headers: REQUEST_HEADERS,
+  });
 
   return response.data;
 };
