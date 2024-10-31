@@ -17,6 +17,29 @@
   }
 }
 
+.spinner {
+  opacity: 1;
+  transition: margin-top 1s ease-out;
+  margin-top: 35vh;
+}
+
+.main {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+  visibility: hidden;
+}
+
+.fade-in {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fade-out {
+  opacity: 0;
+  height: 0;
+  margin-top: 0;
+}
+
 .big-button {
   margin-bottom: 4vh;
   display: flex;
