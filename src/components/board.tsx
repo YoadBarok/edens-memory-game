@@ -8,6 +8,7 @@ import { useCompletedCheckerEffect } from "../hooks/completedChecker";
 import { GAME_MODES } from "../constants/gameModes";
 import { Counter } from "./score/counter";
 import { Timer } from "./score/timer";
+import { Spinner } from "./spinner";
 
 type Props = {
   size: number;
@@ -29,13 +30,21 @@ export const Board = (props: Props) => {
   const { getTime, setTime } = props.time;
   const { setGameCompleted, isGameCompleted } = props;
   const [shouldCount, setShouldCount] = useState(false);
-
+  const [isLoading, setIsloading] = useState(true);
   const gameMode = useContext(GameModeContext);
   const squaresMap = useContext(SquareMapContext);
   const [isClickEnabled, setClickEnabled] = useState(true);
   const [change, setChange] = useState(0);
   const [getFirstSelectedSquare, setFirstSelectedSquare] =
     useState<Nullable<SelectedSquare>>(null);
+
+  useEffect(() => {
+    if (props.chosenImages.length) {
+      setIsloading(false);
+    } else {
+      setIsloading(true);
+    }
+  }, [props.chosenImages]);
 
   const [getSecondSelectedSquare, setSecondSelectedSquare] =
     useState<Nullable<SelectedSquare>>(null);
@@ -82,25 +91,32 @@ export const Board = (props: Props) => {
     setSecondSelectedSquare,
     chosenImages: props.chosenImages,
   });
+  const screenSize = window.screen.width;
 
   return (
     <div>
       <div>
-        <div className="board">{board}</div>
-      </div>
-      <div>
-        {gameMode.mode === GAME_MODES.standard && (
+        {isLoading ? (
+          <Spinner width={screenSize < 400 ? "100" : "165"} strokeWidth="4" />
+        ) : (
           <div>
-            {!isGameCompleted && (
-              <div>
-                <Counter counter={getAttemptCount} />
-                <Timer
-                  getTime={getTime}
-                  setTime={setTime}
-                  shouldCount={shouldCount}
-                />
-              </div>
-            )}
+            <div className="board">{board}</div>
+            <div>
+              {gameMode.mode === GAME_MODES.standard && (
+                <div>
+                  {!isGameCompleted && (
+                    <div>
+                      <Counter counter={getAttemptCount} />
+                      <Timer
+                        getTime={getTime}
+                        setTime={setTime}
+                        shouldCount={shouldCount}
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
