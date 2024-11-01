@@ -7,12 +7,12 @@ export const useCompletedCheckerEffect = ({
   change,
   squaresMap,
   setShouldCount,
-  setShouldShowResult,
+  setGameCompleted,
 }: {
   change: number;
   squaresMap: SquareMap;
   setShouldCount: SetStateFunction<boolean>;
-  setShouldShowResult: SetStateFunction<boolean>;
+  setGameCompleted: SetStateFunction<boolean>;
 }) => {
   useEffect(() => {
     const values = Array.from(squaresMap.values());
@@ -36,9 +36,9 @@ export const useCompletedCheckerEffect = ({
 
       Promise.all(timeoutPromises).then(() => {
         setTimeout(() => {
-          setShouldShowResult(true);
+          setGameCompleted(true);
         }, 100);
       });
     }
-  }, [change, setShouldCount, setShouldShowResult, squaresMap]);
+  }, [change, setShouldCount, setGameCompleted, squaresMap]);
 };

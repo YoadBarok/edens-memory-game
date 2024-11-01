@@ -27,7 +27,7 @@ type Props = {
 export const Board = (props: Props) => {
   const { getAttemptCount, setAttemptCount } = props.attempts;
   const { getTime, setTime } = props.time;
-  const { setGameCompleted: setShouldShowResult, isGameCompleted } = props;
+  const { setGameCompleted, isGameCompleted } = props;
   const [shouldCount, setShouldCount] = useState(false);
 
   const gameMode = useContext(GameModeContext);
@@ -59,7 +59,7 @@ export const Board = (props: Props) => {
     change,
     squaresMap,
     setShouldCount,
-    setShouldShowResult,
+    setGameCompleted,
   });
 
   useMatchCheckerEffect({
