@@ -67,10 +67,10 @@ function App() {
 
   return (
     <div className="App">
-      <div className={`spinner ${!isLoading && "fade-out"}`}>
+      <div className={`spinner ${!isLoading && "hidden-element"}`}>
         <Spinner width={screenSize < 400 ? "100" : "165"} strokeWidth="4" />
       </div>
-      <div className={`main ${!isLoading && "fade-in"}`}>
+      <div className={`main ${!isLoading && "visible-element"}`}>
         {!isGameModeSelected && (
           <div>
             <div className="mode-selector">
