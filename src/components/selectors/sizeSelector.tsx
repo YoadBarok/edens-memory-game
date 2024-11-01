@@ -3,7 +3,7 @@ import "../../css/SizeSelector.css";
 import { BOARD_SIZES } from "../../constants/boardSizes";
 
 type Props = {
-  setSelectedSize: SetStateFunction<number | null>;
+  setSelectedSize: SetStateFunction<number>;
 };
 
 export const SizeSelector = (props: Props) => {
