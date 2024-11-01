@@ -21,7 +21,7 @@ export type Square = {
 
 export type SquareMap = Map<string, Square>;
 
-export type CommonFunctionInput = {
+export type SelectedSquaresInput = {
   firstSelectedSquare: Nullable<SelectedSquare>;
   secondSelectedSquare: Nullable<SelectedSquare>;
   squaresMap: SquareMap;

@@ -1,5 +1,9 @@
 import { SQUARE_CLASSES } from "../constants/squareClasses";
-import { CommonFunctionInput, SetStateFunction, SquareClasses } from "../types";
+import {
+  SelectedSquaresInput,
+  SetStateFunction,
+  SquareClasses,
+} from "../types";
 
 export const boardClickHandler = ({
   id,
@@ -10,7 +14,7 @@ export const boardClickHandler = ({
   setSecondSelectedSquare,
 }: {
   id: string;
-} & CommonFunctionInput) => {
+} & SelectedSquaresInput) => {
   if (!firstSelectedSquare) {
     setFirstSelectedSquare({
       id,

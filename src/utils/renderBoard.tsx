@@ -1,5 +1,5 @@
 import { Square } from "../components/square";
-import { CommonFunctionInput } from "../types";
+import { SelectedSquaresInput } from "../types";
 import { boardClickHandler } from "./handleClicks";
 
 export const renderBoard = ({
@@ -15,7 +15,7 @@ export const renderBoard = ({
   size: number;
   isClickEnabled: boolean;
   chosenImages: string[];
-} & CommonFunctionInput) => {
+} & SelectedSquaresInput) => {
   let imageIndex = 0;
   const board = [];
 
