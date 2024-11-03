@@ -27,9 +27,7 @@ export const SaveScoreForm = (props: Props) => {
   return (
     <form onSubmit={handleSubmit} className="save-score-form">
       <div className="label">
-        <p>
-          Enter your name <br /> to know your rank:
-        </p>
+        <p>Enter your name:</p>
       </div>
       <input
         ref={inputRef}

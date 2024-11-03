@@ -16,7 +16,12 @@ export const createScore = async (
   return response.data;
 };
 
-export const getRank = async (id: number): Promise<{ rank: number }> => {
-  const response = await axios.get(`${BACKEND_URL}/score/${id}`);
+export const getRank = async (
+  boardSize: number,
+  value: number
+): Promise<{ rank: number }> => {
+  const response = await axios.get(
+    `${BACKEND_URL}/score/${boardSize}/${value}`
+  );
   return response.data;
 };

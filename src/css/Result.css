@@ -1,8 +1,9 @@
 .result {
   color: rgb(240, 172, 238);
   display: flex;
+  font-size: 1.5em;
   flex-direction: column;
   justify-content: start;
-  line-height: 1px;
+  line-height: 0;
   max-height: 28vh;
 }
